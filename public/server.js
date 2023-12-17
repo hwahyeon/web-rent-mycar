@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 
 // 여기에 미들웨어와 라우팅을 추가하세요
-//
 app.get("/", (req, res) => {
   res.send("Hello, Express!");
 });
