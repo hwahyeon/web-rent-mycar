@@ -1,9 +1,12 @@
 const express = require("express");
+const connectDB = require("./db"); // db.js 모듈 불러오기
 const app = express();
+
+connectDB();
 
 // 여기에 미들웨어와 라우팅을 추가하세요
 app.get("/", (req, res) => {
-  res.send("Hello, Express!");
+  res.send("Hello, Rent Car Project!");
 });
 
 app.get("/users", (req, res) => {
