@@ -3,17 +3,17 @@ const router = express.Router();
 const Car = require("../models/carModel");
 
 // 샘플 데이터 조회
-// router.get("/api/cars", (req, res) => {
-//   const sampleData = {
-//     cars: [
-//       { model: "Car 1", brand: "Brand 1" },
-//       { model: "Car 2", brand: "Brand 2" },
-//       { model: "Car 3", brand: "Brand 3" },
-//     ],
-//   };
-//   // JSON 형식으로 데이터 응답
-//   res.json(sampleData);
-// });
+router.get("/api/cars", (req, res) => {
+  const sampleData = {
+    cars: [
+      { model: "Car 1", brand: "Brand 1" },
+      { model: "Car 2", brand: "Brand 2" },
+      { model: "Car 3", brand: "Brand 3" },
+    ],
+  };
+  // JSON 형식으로 데이터 응답
+  res.json(sampleData);
+});
 
 // 차량 목록 조회
 router.get("/cars", (req, res) => {

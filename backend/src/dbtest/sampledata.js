@@ -1,6 +1,6 @@
-const connectDB = require("../db"); // db.js 파일을 가져옵니다.
 const mongoose = require("mongoose");
 const Car = require("../models/carModel");
+const connectDB = require("../db"); // db.js 파일을 가져옵니다.
 
 // MongoDB에 연결
 connectDB()
@@ -32,6 +32,8 @@ connectDB()
       },
     ];
 
+    console.log("데이터 추가 전 단계");
+
     // 샘플 데이터 추가
     Car.insertMany(sampleCars)
       .then((result) => {
@@ -43,6 +45,7 @@ connectDB()
         console.error("데이터 추가 중 오류가 발생했습니다:", error);
         mongoose.connection.close(); // 오류 발생 시 연결 종료
       });
+    console.log("데이터 추가 후 단계");
   })
   .catch((err) => {
     console.error("Error connecting to MongoDB", err);
