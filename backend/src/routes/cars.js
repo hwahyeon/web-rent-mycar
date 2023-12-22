@@ -1,17 +1,76 @@
 const express = require("express");
 const router = express.Router();
+const Car = require("../models/carModel");
+
+// 샘플 데이터 조회
+// router.get("/api/cars", (req, res) => {
+//   const sampleData = {
+//     cars: [
+//       { model: "Car 1", brand: "Brand 1" },
+//       { model: "Car 2", brand: "Brand 2" },
+//       { model: "Car 3", brand: "Brand 3" },
+//     ],
+//   };
+//   // JSON 형식으로 데이터 응답
+//   res.json(sampleData);
+// });
 
 // 차량 목록 조회
-router.get("/", (req, res) => {
-  // 여기에 차량 목록을 조회하는 로직을 추가할 수 있습니다.
-  res.json({ cars: ["car1", "car2", "car3"] });
+router.get("/cars", (req, res) => {
+  Car.find({}, (err, cars) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: "Internal server error" });
+    } else {
+      res.json({ cars });
+    }
+  });
 });
 
 // 차량 상세 정보 조회
-router.get("/:carId", (req, res) => {
+router.get("/cars/:carId", (req, res) => {
   const { carId } = req.params;
-  // 여기에 특정 차량의 상세 정보를 조회하는 로직을 추가할 수 있습니다.
-  res.json({ car: `Car details for ID ${carId}` });
+  Car.findById(carId, (err, car) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: "Internal server error" });
+    } else {
+      res.json({ car });
+    }
+  });
+});
+
+// 차량 정보 수정
+router.put("/cars/:carId", (req, res) => {
+  const { carId } = req.params;
+  const updatedCarData = req.body;
+
+  Car.findByIdAndUpdate(
+    carId,
+    updatedCarData,
+    { new: true },
+    (err, updatedCar) => {
+      if (err) {
+        console.error(err);
+        res.status(500).json({ error: "Internal server error" });
+      } else {
+        res.json({ updatedCar });
+      }
+    }
+  );
+});
+
+// 차량 삭제
+router.delete("/cars/:carId", (req, res) => {
+  const { carId } = req.params;
+  Car.findByIdAndDelete(carId, (err, deletedCar) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: "Internal server error" });
+    } else {
+      res.json({ deletedCar });
+    }
+  });
 });
 
 module.exports = router;
