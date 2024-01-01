@@ -3,7 +3,8 @@ const router = express.Router();
 const Car = require("../models/carModel");
 
 // 샘플 데이터 조회
-router.get("/api/cars", (req, res) => {
+router.get("/cars", (req, res) => {
+  console.log("GET request received for /cars");
   const sampleData = {
     cars: [
       { model: "Car 1", brand: "Brand 1" },
@@ -15,17 +16,22 @@ router.get("/api/cars", (req, res) => {
   res.json(sampleData);
 });
 
-// 차량 목록 조회
-router.get("/cars", (req, res) => {
-  Car.find({}, (err, cars) => {
-    if (err) {
-      console.error(err);
-      res.status(500).json({ error: "Internal server error" });
-    } else {
-      res.json({ cars });
-    }
-  });
+router.get("/", (req, res) => {
+  console.log("GET request received for /");
+  res.send("Hello world");
 });
+
+// 차량 목록 조회
+// router.get("/cars", (req, res) => {
+//   Car.find({}, (err, cars) => {
+//     if (err) {
+//       console.error(err);
+//       res.status(500).json({ error: "Internal server error" });
+//     } else {
+//       res.json({ cars });
+//     }
+//   });
+// });
 
 // 차량 상세 정보 조회
 router.get("/cars/:carId", (req, res) => {
