@@ -21,6 +21,30 @@ router.get("/", (req, res) => {
   res.send("Hello world");
 });
 
+// 새로운 차량 추가
+router.post("/cars/register", (req, res) => {
+  const { model, brand, mileage, productionYear, notes } = req.body;
+
+  // 새로운 차량 생성
+  const newCar = new Car({
+    model,
+    mileage,
+    year,
+    details,
+    // 추가 필드들 여기에 추가 가능
+  });
+
+  newCar
+    .save()
+    .then((savedCar) => {
+      res.json({ car: savedCar });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: "Failed to add a new car" });
+    });
+});
+
 // 차량 목록 조회
 // router.get("/cars", (req, res) => {
 //   Car.find({}, (err, cars) => {
