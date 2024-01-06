@@ -11,6 +11,8 @@
     <script>
         document.getElementById('addCarButton').addEventListener('click', async () => {
             try {
+                // 임의로 carId를 생성하여 전송
+                const carId = generateCarId(); // 예를 들어, 랜덤 문자열 생성 함수
                 const response = await fetch('http://localhost:3000/cars/register', {
                     method: 'POST',
                     headers: {
@@ -21,6 +23,7 @@
                         mileage: 0,
                         year: 2023,
                         details: 'New Sorento model',
+                        carId: carId, // 생성한 carId를 요청에 포함
                     }),
                 });
                 const data = await response.json();
@@ -29,6 +32,10 @@
                 console.error('Error:', error);
             }
         });
+        // 임시로 랜덤한 문자열을 생성하는 함수 (예시)
+        function generateCarId() {
+            return Math.random().toString(36).substring(2, 15);
+        }
     </script>
 </body>
 

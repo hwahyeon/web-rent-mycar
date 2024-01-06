@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
 
 // 새로운 차량 추가
 router.post("/cars/register", (req, res) => {
-  const { model, brand, mileage, productionYear, notes } = req.body;
+  const { model, mileage, year, details } = req.body;
 
   // 새로운 차량 생성
   const newCar = new Car({
