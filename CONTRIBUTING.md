@@ -44,11 +44,24 @@ Closes #123
 본 프로젝트는 다음과 같은 이슈 규칙을 갖습니다.
 
 ### 1. 책임과 역할
-
+이슈를 관리하는 자는 보고된 이슈를 검토하고, 분류하며, 해결을 위한 조치를 취하는 책임이 있습니다.
 
 ### 2. 우선 순위 및 분류
-- 이슈는 '긴급', '중간', '낮음'의 세 가지 우선 순위로 분류됩니다.
 - 우선 순위는 이슈의 심각성, 영향 범위, 해결의 시급성을 기반으로 결정됩니다.
+- 이슈엔 Label를 적용하여 분류합니다. Label은 아래와 같습니다.
+
+| Label        | Description                               |
+| ------------ | ----------------------------------------- |
+| `bug`        | Something isn't working                   |
+| `documentation` | Improvements or additions to documentation |
+| `duplicate`  | This issue or pull request already exists |
+| `enhancement` | New feature or request                    |
+| `good first issue` | Good for newcomers                      |
+| `help wanted` | Extra attention is needed                 |
+| `invalid`    | This doesn't seem right                   |
+| `question`   | Further information is requested          |
+| `wontfix`    | This will not be worked on                |
+
 
 ### 3. 보고 절차 및 방법
 - 이슈는 기본적으로 경어체를 사용하는 것을 원칙으로 합니다.
