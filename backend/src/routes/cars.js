@@ -23,13 +23,14 @@ router.get("/", (req, res) => {
 
 // 새로운 차량 추가
 router.post("/cars/register", (req, res) => {
-  const { model, mileage, year, details } = req.body;
+  const { model, mileage, year, fuel, details } = req.body;
 
   // 새로운 차량 생성
   const newCar = new Car({
     model,
     mileage,
     year,
+    fuel,
     details,
     // 추가 필드들 여기에 추가 가능
   });
