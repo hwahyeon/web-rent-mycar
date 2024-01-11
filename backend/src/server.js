@@ -1,34 +1,22 @@
 const express = require("express");
+const connectDB = require("./db"); // db.js 모듈 불러오기
+const cors = require("cors"); // CORS 미들웨어 추가
 const app = express();
+const carsRouter = require("./routes/cars");
+const bookingsRouter = require("./routes/booking");
 
-// 여기에 미들웨어와 라우팅을 추가하세요
-app.get("/", (req, res) => {
-  res.send("Hello, Express!");
-});
+connectDB();
 
-app.get("/users", (req, res) => {
-  // GET /users 엔드포인트에 대한 처리 로직
-  res.send("GET request to /users endpoint");
-});
+// 미들웨어: JSON 파싱
+app.use(express.json());
 
-app.post("/users", (req, res) => {
-  // POST /users 엔드포인트에 대한 처리 로직
-  res.send("POST request to /users endpoint");
-});
+// CORS 설정
+app.use(cors());
 
-app.put("/users/:id", (req, res) => {
-  // PUT /users/:id 엔드포인트에 대한 처리 로직
-  const userId = req.params.id;
-  res.send(`PUT request to /users/${userId} endpoint`);
-});
-
-app.delete("/users/:id", (req, res) => {
-  // DELETE /users/:id 엔드포인트에 대한 처리 로직
-  const userId = req.params.id;
-  res.send(`DELETE request to /users/${userId} endpoint`);
-});
-
-app.use(express.static("public"));
+// 라우팅 설정
+app.use("/", carsRouter);
+app.use("/cars", carsRouter);
+app.use("/booking", bookingsRouter);
 
 const PORT = 3000;
 app.listen(PORT, () => {

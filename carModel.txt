@@ -1,0 +1,118 @@
+1
+model: '쏘렌토',
+mileage: 0,
+year: 2024,
+fuel: '경유'
+details: '중형 SUV',
+
+2
+model: '쏠라티',
+mileage: 0,
+year: 2019,
+fuel: '경유'
+details: '대형 밴',
+
+3
+model: '스타렉스',
+mileage: 0,
+year: 2020,
+fuel: '경유'
+details: '대형 RV',
+
+4
+model: '스타리아',
+mileage: 0,
+year: 2023,
+fuel: '경유'
+details: '대형 RV',
+
+5
+model: '아반떼',
+mileage: 0,
+year: 2023,
+fuel: '휘발유'
+details: '준중형 세단',
+
+6
+model: '투싼',
+mileage: 0,
+year: 2024,
+fuel: '휘발유'
+details: '준중형 SUV',
+
+7
+model: '카니발',
+mileage: 0,
+year: 2024,
+fuel: '휘발유'
+details: '대형 RV',
+
+8
+model: '싼타페',
+mileage: 0,
+year: 2024,
+fuel: '휘발유'
+details: '중형 SUV',
+
+9
+model: '제네시스 G80',
+mileage: 0,
+year: 2024,
+fuel: '휘발유'
+details: '준대형 세단',
+
+10
+model: 'K5',
+mileage: 0,
+year: 2024,
+fuel: '경유'
+details: '중형 세단',
+
+11
+model: '제네시스 GV70',
+mileage: 0,
+year: 2024,
+fuel: '경유'
+details: '중형 SUV',
+
+12
+model: '쏘나타',
+mileage: 0,
+year: 2024,
+fuel: '휘발유'
+details: '중형 세단',
+
+13
+model: '르노 마스터',
+mileage: 0,
+year: 2022,
+fuel: '경유'
+details: '대형 밴',
+
+14
+model: '메르세데스 벤츠 스프린터',
+mileage: 0,
+year: 2019,
+fuel: '경유'
+details: '대형 밴',
+
+15
+model: '쉐보레 시티 익스프레스',
+mileage: 0,
+year: 2015,
+fuel: '휘발유'
+details: '중형 밴',
+
+16
+model: 'K3',
+mileage: 0,
+year: 2015,
+fuel: '휘발유'
+details: '준중형 세단',
+
+17
+model: '에쿠스',
+mileage: 0,
+year: 2015,
+fuel: '휘발유'
+details: '대형 세단',
