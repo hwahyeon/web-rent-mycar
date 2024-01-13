@@ -2,11 +2,10 @@ const express = require("express");
 const router = express.Router();
 const Car = require("../models/carModel");
 
-// 차종 검색
-router.get("/search/:model", async (req, res) => {
+// 모든 차량 데이터 가져오기
+router.get("/all", async (req, res) => {
   try {
-    const { model } = req.params;
-    const cars = await Car.find({ model: new RegExp(model, "i") });
+    const cars = await Car.find();
     res.json({ cars });
   } catch (error) {
     console.error(error);
@@ -14,19 +13,8 @@ router.get("/search/:model", async (req, res) => {
   }
 });
 
-// 차량 정보 조회 (프론트엔드에서 호출할 때 차량 ID를 이용하여)
-router.get("/cars/:model", async (req, res) => {
-  try {
-    const { model } = req.params;
-    const cars = await Car.find({ model: new RegExp(model, "i") });
-    res.json({ cars });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
+//--------------------------------------------------------------위에 1개만 참고!! http://localhost:3000/allcars/all 아래 소스들은 무시!!
 
-//--------------------------------------------------------------우선 위에 2개만 참고!! 아래 소스들은 무시!!
 // 차량 목록 조회
 router.get("/cars", (req, res) => {
   Car.find({}, (err, cars) => {
