@@ -2,23 +2,42 @@ const express = require("express");
 const router = express.Router();
 const Car = require("../models/carModel");
 
-// 샘플 데이터 조회
-router.get("/cars", (req, res) => {
-  console.log("GET request received for /cars");
-  const sampleData = {
-    cars: [
-      { model: "Car 1", brand: "Brand 1" },
-      { model: "Car 2", brand: "Brand 2" },
-      { model: "Car 3", brand: "Brand 3" },
-    ],
-  };
-  // JSON 형식으로 데이터 응답
-  res.json(sampleData);
+// 모든 차량 데이터 가져오기
+router.get("/all", async (req, res) => {
+  try {
+    const cars = await Car.find();
+    res.json({ cars });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
-router.get("/", (req, res) => {
-  console.log("GET request received for /");
-  res.send("Hello world");
+//--------------------------------------------------------------위에 1개만 참고!! http://localhost:3000/allcars/all 아래 소스들은 무시!!
+
+// 차량 목록 조회
+router.get("/cars", (req, res) => {
+  Car.find({}, (err, cars) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: "Internal server error" });
+    } else {
+      res.json({ cars });
+    }
+  });
+});
+
+// 차량 상세 정보 조회
+router.get("/cars/:carId", (req, res) => {
+  const { carId } = req.params;
+  Car.findById(carId, (err, car) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: "Internal server error" });
+    } else {
+      res.json({ car });
+    }
+  });
 });
 
 // 새로운 차량 추가
@@ -45,18 +64,6 @@ router.post("/cars/register", (req, res) => {
       res.status(500).json({ error: "Failed to add a new car" });
     });
 });
-
-// 차량 목록 조회
-// router.get("/cars", (req, res) => {
-//   Car.find({}, (err, cars) => {
-//     if (err) {
-//       console.error(err);
-//       res.status(500).json({ error: "Internal server error" });
-//     } else {
-//       res.json({ cars });
-//     }
-//   });
-// });
 
 // 차량 상세 정보 조회
 router.get("/cars/:carId", (req, res) => {
